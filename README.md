@@ -22,4 +22,4 @@ No external packages are needed — everything uses the Python standard library.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/thread-safe-user-store.git
+git clone https://github.com/daheng414514/thread-safe-user-store.git
