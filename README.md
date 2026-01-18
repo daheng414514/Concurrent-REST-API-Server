@@ -17,9 +17,33 @@ with thread safety ensured by locking, making it safe for use with concurrent re
 
 No external packages are needed — everything uses the Python standard library.
 
-## Installation
+### Installation
 
 1. Clone the repository:
 
 ```bash
 git clone https://github.com/daheng414514/thread-safe-user-store.git
+```
+
+### How to Run the Server
+
+Once you get the code from the repository and active the python enviroment:
+```bush
+python server.py
+```
+
+Then you should see: 
+```bush
+Server running on http://127.0.0.1:8000
+```
+
+This means your REST API server is now running and ready to accept requests
+
+You can now use tools like curl, Postman, or a browser to interact with the API.
+
+Example:
+```bush
+curl http://127.0.0.1:8000/users
+```
+
+
