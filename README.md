@@ -14,6 +14,7 @@ with thread safety ensured by locking, making it safe for use with concurrent re
 ### Requirements
 
 -python 3.6+
+
 No external packages are needed — everything uses the Python standard library.
 
 ## Installation
