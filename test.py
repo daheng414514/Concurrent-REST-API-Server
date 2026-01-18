@@ -1,3 +1,7 @@
+"""
+    Testing file for functions.py
+"""
+
 from functions import Store
 
 def test_create_and_get():

@@ -1,13 +1,16 @@
+"""
+    Thread-safe in-memory store for user data.
+    
+    Invariants:
+    - name_key: name -> id
+    - db: id -> info (dict)
+    - All public methods acquire self.lock
+"""
+
+
 import threading
 
 class Store:
-    """Thread-safe in-memory store for user data.
-
-        Invariants:
-        - name_key: name -> id
-        - db: id -> info (dict)
-        - All public methods acquire self.lock
-        """
 
 
     def __init__(self):
@@ -15,7 +18,6 @@ class Store:
         self.db = {}     ##{id : info}
         self.name_key={}     ##{name : id}
         self.lock = threading.Lock()
-
 
 
 
