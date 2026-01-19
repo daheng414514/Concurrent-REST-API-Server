@@ -56,6 +56,13 @@ curl http://127.0.0.1:8000/users
 * You can open the URL in a browser or send HTTP requests from the terminal
 
 
+## Project Structure
+
+- `server.py` — HTTP server and request handlers
+- `functions.py` — Thread-safe in-memory user store
+- `test.py` — Unit tests for the store logic
+
+
 ## API Endpoints
 
 The following endpoints are available in this REST API. All requests and responses use JSON.
@@ -112,7 +119,7 @@ curl -X PUT "http://127.0.0.1:8000/users/<name>" \
 
 ### PATCH /users/<name>
 
- Update part of an existing user's information by sending JSON in the request body.
+Update part of an existing user's information by sending JSON in the request body.
 
 **Request example:**
 ```bash
@@ -132,3 +139,7 @@ Delete an existing user by specifying the user name in the URL.
 curl -X DELETE "http://127.0.0.1:8000/users/<name>"
 ```
 
+## Note and Limitation
+* The server will run on localhost (127.0.0.1)
+* It listens on port 8000 by default
+* You can open the URL in a browser or send HTTP requests from the terminal
