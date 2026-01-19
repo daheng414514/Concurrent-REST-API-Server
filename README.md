@@ -139,7 +139,40 @@ Delete an existing user by specifying the user name in the URL.
 curl -X DELETE "http://127.0.0.1:8000/users/<name>"
 ```
 
-## Note and Limitation
-* The server will run on localhost (127.0.0.1)
-* It listens on port 8000 by default
-* You can open the URL in a browser or send HTTP requests from the terminal
+## Notes and Limitations
+
+### Notes
+* The server will run on localhost (`127.0.0.1`)
+* It listens on port `8000` by default
+* You can interact with it using a browser, `curl`, or Postman
+
+### Limitations
+* Data is stored in memory and will reset when the server restarts
+* Designed for single-process concurrency
+* No authentication or persistence layer
+* Intended for learning and demonstration purposes
+
+
+## Testing
+
+The API can be tested using command-line tools such as `curl` or API clients like Postman.
+
+Example commands:
+
+```bash
+# Get all user in user database
+curl http://127.0.0.1:8000/users
+
+# Create a new user
+curl -X POST http://127.0.0.1:8000/users \
+     -H "Content-Type: application/json" \
+     -d '{"name":"alice","age":30}'
+
+# Update a user
+curl -X PATCH http://127.0.0.1:8000/users/alice \
+     -H "Content-Type: application/json" \
+     -d '{"age":31}'
+
+# Delete a user
+curl -X DELETE http://127.0.0.1:8000/users/alice
+```
