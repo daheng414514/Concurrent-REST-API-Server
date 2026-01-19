@@ -4,16 +4,19 @@ A simple Python REST API server with a thread-safe in-memory user store.
 
 ## About 
 
-This project implements a basic REST HTTP API server in Python using only the standard library. It provides a thread-safe in-memory store for user data,
-allowing clients to create, read, update, and delete user information via JSON over HTTP.
+This project implements a basic REST HTTP API server in Python using only the standard library. 
+It provides a thread-safe in-memory store for user data, allowing clients to create, read, update, 
+and delete user information via JSON over HTTP.
 
-The server supports standard HTTP methods (GET, POST, PUT, PATCH, DELETE) to perform CRUD operations on user resources. The data is stored in memory
-with thread safety ensured by locking, making it safe for use with concurrent requests within a single process.
+The server supports standard HTTP methods (GET, POST, PUT, PATCH, DELETE) to perform CRUD operations 
+on user resources. The data is stored in memory with thread safety ensured by locking, making it safe 
+for use with concurrent requests within a single process.
+
 
 ## Getting Started 
 ### Requirements
 
--python 3.6+
+-Python 3.6+
 
 No external packages are needed — everything uses the Python standard library.
 
@@ -27,13 +30,13 @@ git clone https://github.com/daheng414514/thread-safe-user-store.git
 
 ### How to Run the Server
 
-Once you get the code from the repository and active the python enviroment:
-```bush
+Once you clone the repository and activate your Python environment:
+```bash
 python server.py
 ```
 
 Then you should see: 
-```bush
+```bash
 Server running on http://127.0.0.1:8000
 ```
 
@@ -42,7 +45,7 @@ This means your REST API server is now running and ready to accept requests
 You can now use tools like curl, Postman, or a browser to interact with the API.
 
 Example:
-```bush
+```bash
 curl http://127.0.0.1:8000/users
 ```
 
@@ -51,4 +54,81 @@ curl http://127.0.0.1:8000/users
 * The server will run on localhost (127.0.0.1)
 * It listens on port 8000 by default
 * You can open the URL in a browser or send HTTP requests from the terminal
+
+
+## API Endpoints
+
+The following endpoints are available in this REST API. All requests and responses use JSON.
+
+---
+
+### GET /users
+
+Retrieve a list of all user names.
+
+**Request:**
+```bash
+curl http://127.0.0.1:8000/users
+```
+
+---
+
+### GET /users/<name>
+
+Retrieve info for a specific user.
+
+**Request example:**
+```bash
+curl "http://127.0.0.1:8000/users/<name>"
+```
+
+---
+
+### POST /users
+
+Create a new user by sending JSON in the request body.
+
+**Request example:**
+```bash
+curl -X POST "http://127.0.0.1:8000/users" \
+     -H "Content-Type: application/json" \
+     -d '{"name":"charlie","age":29,"email":"charlie@example.com"}'
+```
+
+---
+
+### PUT /users/<name>
+
+Replace all information for an existing user.
+
+**Request example:**
+```bash
+curl -X PUT "http://127.0.0.1:8000/users/<name>" \
+     -H "Content-Type: application/json" \
+     -d '{"age":29,"email":"charlie@example.com"}'
+```
+
+---
+
+### PATCH /users/<name>
+
+ Update part of an existing user's information by sending JSON in the request body.
+
+**Request example:**
+```bash
+curl -X PATCH "http://127.0.0.1:8000/users/<name>" \
+     -H "Content-Type: application/json" \
+     -d '{"age":29,"email":"charlie@example.com"}'
+```
+
+---
+
+### DELETE /users/<name>
+
+Delete an existing user by specifying the user name in the URL.
+
+**Request example:**
+```bash
+curl -X DELETE "http://127.0.0.1:8000/users/<name>"
+```
 
