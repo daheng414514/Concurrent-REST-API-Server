@@ -48,7 +48,7 @@ curl http://127.0.0.1:8000/users
 
 #### Notes
 
- The server will run on localhost (127.0.0.1)
- It listens on port 8000 by default
- You can open the URL in a browser or send HTTP requests from the terminal
+* The server will run on localhost (127.0.0.1)
+* It listens on port 8000 by default
+* You can open the URL in a browser or send HTTP requests from the terminal
 
