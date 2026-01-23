@@ -14,10 +14,11 @@
 """
 
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from functions import Store
 from urllib.parse import unquote
+import time
 
 store = Store()
 
@@ -58,6 +59,16 @@ class RequestHandler(BaseHTTPRequestHandler):
             if path == "/users":
                 data = store.list_users()
                 self._send_json(200, data)
+
+
+            # Used to test concurrency.
+            # /slow will sleep for 5 seconds.
+            # If the server is single-threaded, other requests will be blocked.
+            if self.path == "/slow":
+                time.sleep(5)
+                self._send_json(200, {"msg": "slow done"})
+
+
 
             elif path.startswith("/users/"):
                 encoded_name = path[len("/users/"):]
@@ -212,11 +223,20 @@ class RequestHandler(BaseHTTPRequestHandler):
             self._send_json(500, {"error": "Server error"})
     
 
+
+
       
 
 if __name__ == "__main__":
     host="127.0.0.1"
     port=8000
-    httpd = HTTPServer((host, port), RequestHandler)
+    httpd = ThreadingHTTPServer((host, port), RequestHandler)
     print(f"Server running on http://{host}:{port}")
     httpd.serve_forever()  
+
+
+
+## how to use curl:
+## curl -X METHOD "$URL" \      URL="http://127.0.0.1:8000" (local) 
+## -H "$HEADER" \       HEADER="Content-Type: application:json"
+## -d 'body'
