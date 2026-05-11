@@ -16,7 +16,7 @@
 
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
-from functions import Store
+from user_store import Store
 from urllib.parse import unquote
 import time
 
