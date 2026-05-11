@@ -1,10 +1,10 @@
 # Concurrent REST API Server
 
-A simple Python REST API server with a thread-safe in-memory user store.
+A concurrent RESTful API server in Python supporting thread-safe CRUD operations over HTTP using JSON-based communication.
 
 ## About 
 
-This project implements a basic REST HTTP API server in Python using only the standard library. 
+This project implements a concurrent RESTful backend service in Python with synchronized in-memory data management for multi-client CRUD operations over HTTP.
 It provides a thread-safe in-memory store for user data, allowing clients to create, read, update, 
 and delete user information via JSON over HTTP.
 
