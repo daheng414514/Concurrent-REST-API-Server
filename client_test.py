@@ -2,7 +2,7 @@
     Testing file for functions.py
 """
 
-from functions import Store
+from user_store import Store
 
 def test_create_and_get():
     store = Store()
