@@ -1,4 +1,4 @@
-# thread-safe-user-store
+# Concurrent REST API Server
 
 A simple Python REST API server with a thread-safe in-memory user store.
 
